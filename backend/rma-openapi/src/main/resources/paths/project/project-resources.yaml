@@ -1,0 +1,52 @@
+get:
+  summary: Get all project resources
+  operationId: getProjectResources
+  parameters:
+    - in: path
+      name: id
+      schema:
+        $ref: ../../schemas/GUID.yaml
+      required: true
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../../schemas/Resource.yaml
+    '405':
+      description: Invalid input
+post:
+  summary: Add one or more resources to the project
+  operationId: addProjectResources
+  parameters:
+    - in: path
+      name: id
+      schema:
+        $ref: ../../schemas/GUID.yaml
+      required: true
+  requestBody:
+    $ref: ../../schemas/GUID-request-body.yaml
+  responses:
+    '204':
+      description: Successful operation
+    '405':
+      description: Invalid input
+put:
+  summary: Set one or more resources as this project resources, removing the existing ones
+  operationId: updateProjectResources
+  parameters:
+    - in: path
+      name: id
+      schema:
+        $ref: ../../schemas/GUID.yaml
+      required: true
+  requestBody:
+    $ref: ../../schemas/GUID-request-body.yaml
+  responses:
+    '204':
+      description: Successful operation
+    '405':
+      description: Invalid input

@@ -1,0 +1,11 @@
+required: [ id, name ]
+type: object
+properties:
+  id:
+    $ref: ./GUID.yaml
+  name:
+    type: string
+    example: Project A
+  description:
+    type: string
+    example: Project A is a project to do this and that

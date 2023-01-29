@@ -1,0 +1,41 @@
+get:
+  summary: Get a resource by id
+  operationId: getResource
+  parameters:
+    - in: path
+      name: id
+      schema:
+        $ref: ../../schemas/GUID.yaml
+      required: true
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/Resource.yaml
+    '405':
+      description: Invalid input
+put:
+  summary: Update a resource by id
+  operationId: updateResource
+  parameters:
+    - in: path
+      name: id
+      schema:
+        $ref: ../../schemas/GUID.yaml
+      required: true
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/Resource.yaml
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/Resource.yaml
+    '405':
+      description: Invalid input

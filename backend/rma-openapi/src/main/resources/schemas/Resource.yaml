@@ -1,0 +1,8 @@
+required: [ id, name ]
+type: object
+properties:
+  id:
+    $ref: ./GUID.yaml
+  name:
+    type: string
+    example: Resource A

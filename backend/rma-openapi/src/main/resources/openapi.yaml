@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Resource Management Application
+  description: |
+    Resource Management Application
+  version: 1.0.0
+
+paths:
+  /project:
+    $ref: ./paths/project/project.yaml
+  /project/{id}:
+    $ref: ./paths/project/project-with-id.yaml
+  /project/{id}/resources:
+    $ref: ./paths/project/project-resources.yaml
+  /projects:
+    $ref: ./paths/project/projects.yaml
+  /resource:
+    $ref: ./paths/resource/resource.yaml
+  /resource/{id}:
+    $ref: ./paths/resource/resource-with-id.yaml
+  /resources:
+    $ref: ./paths/resource/resources.yaml
+
