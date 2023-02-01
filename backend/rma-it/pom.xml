@@ -10,12 +10,14 @@
     </parent>
 
     <artifactId>rma-it</artifactId>
+
+    <description>
+        RMA IntegrationTests
+        Wraps the rma-spring application and provides additional controllers required for integration tests,
+        which shouldn't be available in the application itself.
+    </description>
+
     <dependencies>
-        <dependency>
-            <groupId>com.misset</groupId>
-            <artifactId>rma-service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.misset</groupId>
             <artifactId>rma-spring</artifactId>

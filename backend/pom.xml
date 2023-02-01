@@ -26,6 +26,9 @@
     </modules>
 
     <properties>
+        <sonar.organization>timmisset</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
