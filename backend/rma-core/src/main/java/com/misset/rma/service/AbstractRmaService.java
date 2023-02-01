@@ -1,36 +1,27 @@
 package com.misset.rma.service;
 
-import com.misset.rma.utils.RmaEntityMapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public abstract class AbstractRmaService<T, D> implements RmaService<D> {
+public abstract class AbstractRmaService<T> implements RmaService<T> {
 
     protected final JpaRepository<T, String> repository;
-    protected final RmaEntityMapper<T, D> entityMapper;
 
-    protected AbstractRmaService(JpaRepository<T, String> repository, RmaEntityMapper<T, D> entityMapper) {
+    protected AbstractRmaService(JpaRepository<T, String> repository) {
         this.repository = repository;
-        this.entityMapper = entityMapper;
     }
 
     @Override
-    public D get(String id) {
-        return entityMapper.toDto(getAsType(id));
-    }
-
-    public T getAsType(String id) {
+    public T get(String id) {
         return repository.getReferenceById(id);
+
     }
 
     @Override
-    public D update(String id, D source) {
-        T resource = repository.getReferenceById(id);
-        entityMapper.update(resource, source);
-        validate(resource);
-        resource = repository.save(resource);
-        return entityMapper.toDto(resource);
+    public T update(String id, T source) {
+        validate(source);
+        return repository.save(source);
     }
 
     /**
@@ -39,19 +30,14 @@ public abstract class AbstractRmaService<T, D> implements RmaService<D> {
     abstract void validate(T entityToSave);
 
     @Override
-    public D add(D source) {
-        T entity = entityMapper.fromDto(source);
-        validate(entity);
-        T save = repository.save(entity);
-        return entityMapper.toDto(save);
+    public T add(T source) {
+        validate(source);
+        return repository.save(source);
     }
 
     @Override
-    public List<D> getAll() {
-        return repository.findAll()
-                .stream()
-                .map(entityMapper::toDto)
-                .toList();
+    public List<T> getAll() {
+        return repository.findAll();
     }
 
     @Override

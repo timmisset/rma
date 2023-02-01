@@ -18,7 +18,7 @@
         <!-- rma -->
         <dependency>
             <groupId>com.misset</groupId>
-            <artifactId>rma-resource</artifactId>
+            <artifactId>rma-restapi</artifactId>
             <version>${project.version}</version>
         </dependency>
 

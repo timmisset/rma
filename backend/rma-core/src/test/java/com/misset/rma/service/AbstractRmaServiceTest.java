@@ -1,6 +1,5 @@
 package com.misset.rma.service;
 
-import com.misset.rma.utils.RmaEntityMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -17,16 +16,11 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class AbstractRmaServiceTest {
     private static final String ID = "ID1";
-
     private static final Integer ENTITY = 1;
 
-    private static final Long ENTITY_DTO = 1L;
     public boolean canDelete = true;
 
     public boolean isValidated = false;
-
-    @Mock
-    RmaEntityMapper<Integer, Long> entityMapper;
 
     @Mock
     JpaRepository<Integer, String> repository;
@@ -36,47 +30,41 @@ class AbstractRmaServiceTest {
         // ARRANGE
         RmaServiceImpl rmaService = new RmaServiceImpl();
         when(repository.getReferenceById(ID)).thenReturn(ENTITY);
-        when(entityMapper.toDto(ENTITY)).thenReturn(ENTITY_DTO);
 
         // ACT
-        Long entityDto = rmaService.get(ID);
+        Integer entityDto = rmaService.get(ID);
 
         // ASSERT
-        assertEquals(ENTITY_DTO, entityDto);
+        assertEquals(ENTITY, entityDto);
     }
 
     @Test
-    void testUpdateReturnsUpdatedEntityAfterCallingUpdateOnTheMapper() {
+    void testUpdateReturnsUpdatedEntity() {
         // ARRANGE
         RmaServiceImpl rmaService = new RmaServiceImpl();
-        when(repository.getReferenceById(ID)).thenReturn(ENTITY);
-        when(entityMapper.toDto(ENTITY)).thenReturn(ENTITY_DTO);
         when(repository.save(ENTITY)).thenReturn(ENTITY);
         assertFalse(isValidated);
 
         // ACT
-        Long entityDto = rmaService.update(ID, ENTITY_DTO);
+        Integer entityDto = rmaService.update(ID, ENTITY);
 
         // ASSERT
-        assertEquals(ENTITY_DTO, entityDto);
+        assertEquals(ENTITY, entityDto);
         assertTrue(isValidated);
-        verify(entityMapper).update(ENTITY, ENTITY_DTO);
     }
 
     @Test
     void testAddCreatesAndSavesNewEntity() {
         // ARRANGE
         RmaServiceImpl rmaService = new RmaServiceImpl();
-        when(entityMapper.toDto(ENTITY)).thenReturn(ENTITY_DTO);
-        when(entityMapper.fromDto(ENTITY_DTO)).thenReturn(ENTITY);
         when(repository.save(ENTITY)).thenReturn(ENTITY);
         assertFalse(isValidated);
 
         // ACT
-        Long entityDto = rmaService.add(ENTITY_DTO);
+        Integer entityDto = rmaService.add(ENTITY);
 
         // ASSERT
-        assertEquals(ENTITY_DTO, entityDto);
+        assertEquals(ENTITY, entityDto);
         assertTrue(isValidated);
         verify(repository).save(ENTITY);
     }
@@ -85,11 +73,10 @@ class AbstractRmaServiceTest {
     void testGetAllReturnsAllEntities() {
         // ARRANGE
         RmaServiceImpl rmaService = new RmaServiceImpl();
-        when(entityMapper.toDto(ENTITY)).thenReturn(ENTITY_DTO);
         when(repository.findAll()).thenReturn(List.of(ENTITY));
 
         // ACT
-        Collection<Long> entities = rmaService.getAll();
+        Collection<Integer> entities = rmaService.getAll();
 
         // ASSERT
         assertEquals(1, entities.size());
@@ -122,9 +109,9 @@ class AbstractRmaServiceTest {
         verify(repository, never()).delete(ENTITY);
     }
 
-    private class RmaServiceImpl extends AbstractRmaService<Integer, Long> {
+    private class RmaServiceImpl extends AbstractRmaService<Integer> {
         protected RmaServiceImpl() {
-            super(AbstractRmaServiceTest.this.repository, AbstractRmaServiceTest.this.entityMapper);
+            super(AbstractRmaServiceTest.this.repository);
         }
 
         @Override
