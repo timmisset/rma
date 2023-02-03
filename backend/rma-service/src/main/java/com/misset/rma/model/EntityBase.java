@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class AbstractEntity {
+public class EntityBase {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -16,7 +16,7 @@ public class AbstractEntity {
 
     private String description;
 
-    public AbstractEntity() {
+    public EntityBase() {
         id = RmaGUID.generateGUID();
     }
 

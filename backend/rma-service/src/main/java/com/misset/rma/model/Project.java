@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity
-public class Project extends AbstractEntity {
+public class Project extends EntityBase {
 
     @OneToMany
     private final Collection<Resource> resourceCollection = new ArrayList<>();

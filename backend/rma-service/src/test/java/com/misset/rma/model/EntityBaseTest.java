@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class AbstractEntityTest {
+class EntityBaseTest {
 
     public static final String MY_ENTITY = "my entity";
     public static final String MY_DESCRIPTION = "my description";
 
     @Test
     void testNewInstanceCreatesId() {
-        EntityImpl entity = new EntityImpl();
+        EntityBaseImpl entity = new EntityBaseImpl();
         entity.setName(MY_ENTITY);
         entity.setDescription(MY_DESCRIPTION);
 
@@ -21,7 +21,7 @@ class AbstractEntityTest {
         assertNotNull(entity.getId());
     }
 
-    private static class EntityImpl extends AbstractEntity {
+    private static class EntityBaseImpl extends EntityBase {
 
     }
 
