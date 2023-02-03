@@ -2,8 +2,10 @@ package com.misset.rma.model;
 
 import com.misset.rma.utils.RmaGUID;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+@Entity
 public class AbstractEntity {
 
     @Id
