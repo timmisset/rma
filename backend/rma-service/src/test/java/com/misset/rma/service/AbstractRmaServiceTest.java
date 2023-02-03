@@ -115,12 +115,12 @@ class AbstractRmaServiceTest {
         }
 
         @Override
-        void validate(Integer entityToSave) {
+        protected void canPersist(Integer entityToSave) {
             isValidated = true;
         }
 
         @Override
-        boolean canDelete(Integer entityToDelete) {
+        protected boolean canDelete(Integer entityToDelete) {
             return canDelete;
         }
     }

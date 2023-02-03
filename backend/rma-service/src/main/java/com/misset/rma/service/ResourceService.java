@@ -11,14 +11,4 @@ public class ResourceService extends AbstractRmaService<Resource> {
     public ResourceService(ResourceRepository resourceRepository) {
         super(resourceRepository);
     }
-
-    @Override
-    void validate(Resource entityToSave) {
-        // no validation implemented
-    }
-
-    @Override
-    boolean canDelete(Resource entityToDelete) {
-        return true;
-    }
 }

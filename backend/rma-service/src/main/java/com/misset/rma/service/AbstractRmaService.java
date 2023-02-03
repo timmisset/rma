@@ -20,18 +20,20 @@ public abstract class AbstractRmaService<T> implements RmaService<T> {
 
     @Override
     public T update(String id, T source) {
-        validate(source);
+        canPersist(source);
         return repository.save(source);
     }
 
     /**
      * Validate the entity prior to persisting it in the repository
      */
-    abstract void validate(T entityToSave);
+    protected void canPersist(T entityToSave) {
+
+    }
 
     @Override
     public T add(T source) {
-        validate(source);
+        canPersist(source);
         return repository.save(source);
     }
 
@@ -51,5 +53,7 @@ public abstract class AbstractRmaService<T> implements RmaService<T> {
     /**
      * Validate that the entity can be removed safely
      */
-    abstract boolean canDelete(T entityToDelete);
+    protected boolean canDelete(T entityToDelete) {
+        return true;
+    }
 }

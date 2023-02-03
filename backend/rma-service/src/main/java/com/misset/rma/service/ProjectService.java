@@ -20,18 +20,10 @@ public class ProjectService extends AbstractRmaService<Project> {
         this.resourceService = resourceService;
     }
 
-    @Override
-    void validate(Project entityToSave) {
-        // no validation implemented
-    }
-
-    @Override
-    boolean canDelete(Project entityToDelete) {
-        return true;
-    }
-
     public void addResourcesById(String id, Collection<String> resourceIds) {
-        repository.getReferenceById(id).addAllResources(getResources(resourceIds));
+        Project project = repository.getReferenceById(id);
+        project.addAllResources(getResources(resourceIds));
+        update(id, project);
     }
 
     private Collection<Resource> getResources(Collection<String> resourceIds) {
@@ -41,7 +33,9 @@ public class ProjectService extends AbstractRmaService<Project> {
     }
 
     public void updateResourcesById(String id, Collection<String> resourceIds) {
-        repository.getReferenceById(id).setResources(getResources(resourceIds));
+        Project project = repository.getReferenceById(id);
+        project.setResources(getResources(resourceIds));
+        update(id, project);
     }
 
 }
