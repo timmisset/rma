@@ -6,6 +6,8 @@ info:
   version: 1.0.0
 
 paths:
+  /booking:
+    $ref: ./paths/booking/booking.yaml
   /project:
     $ref: ./paths/project/project.yaml
   /project/{id}:
@@ -18,6 +20,8 @@ paths:
     $ref: ./paths/resource/resource.yaml
   /resource/{id}:
     $ref: ./paths/resource/resource-with-id.yaml
+  /resource/{id}/bookings:
+    $ref: ./paths/resource/resource-bookings.yaml
   /resources:
     $ref: ./paths/resource/resources.yaml
 

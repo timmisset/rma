@@ -1,4 +1,4 @@
-required: [ id, name ]
+required: [ id ]
 type: object
 properties:
   id:
@@ -6,3 +6,10 @@ properties:
   name:
     type: string
     example: Resource A
+  description:
+    type: string
+    example: Resource A is a resource to do this and that
+  bookings:
+    type: array
+    items:
+      $ref: ./Booking.yaml

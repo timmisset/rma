@@ -58,18 +58,11 @@ public class ProjectController implements ProjectApi, ProjectsApi {
 
     @Override
     public ResponseEntity<List<ResourceDto>> getProjectResources(String id) {
-        List<ResourceDto> resources = service.get(id).getResources()
-                .stream()
-                .map(ResourceMapper.INSTANCE::toDto)
-                .toList();
-        return ResponseEntity.ok().body(resources);
+        return ResponseEntity.ok().body(ResourceMapper.INSTANCE.toDto(service.get(id).getResources()));
     }
 
     @Override
     public ResponseEntity<List<ProjectDto>> getProjects() {
-        List<ProjectDto> projects = service.getAll().stream()
-                .map(mapper::toDto)
-                .toList();
-        return ResponseEntity.ok().body(projects);
+        return ResponseEntity.ok().body(mapper.toDto(service.getAll()));
     }
 }

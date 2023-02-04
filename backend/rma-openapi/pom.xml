@@ -83,6 +83,8 @@
                             <inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <modelNameSuffix>Dto</modelNameSuffix>
+                            <typeMappings>string+datetime=ZonedDateTime</typeMappings>
+                            <schemaMappings>ZonedDateTime=java.time.ZonedDateTime</schemaMappings>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <openApiNullable>false</openApiNullable>

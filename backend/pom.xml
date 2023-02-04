@@ -23,6 +23,7 @@
         <module>rma-core</module>
         <module>rma-it</module>
         <module>rma-restapi</module>
+        <module>rma-it-service</module>
     </modules>
 
     <properties>

@@ -1,0 +1,20 @@
+post:
+  summary: Add a new booking
+  operationId: addBooking
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/Booking.yaml
+    required: true
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../schemas/Booking.yaml
+    '405':
+      description: Invalid input
+
+

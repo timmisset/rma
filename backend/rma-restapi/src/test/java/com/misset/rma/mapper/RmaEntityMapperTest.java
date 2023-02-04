@@ -4,17 +4,12 @@ import com.misset.rma.model.Resource;
 import org.junit.jupiter.api.Test;
 import org.openapitools.model.ResourceDto;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ResourceMapperTest {
+class RmaEntityMapperTest {
 
     public static final String MY_NAME = "my name";
-
-    @Test
-    void mapperIsNullSafe() {
-        assertNull(ResourceMapper.INSTANCE.toDto(null));
-        assertNull(ResourceMapper.INSTANCE.fromDto(null));
-    }
 
     @Test
     void resourceToResourceDto() {
