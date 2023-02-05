@@ -23,8 +23,8 @@ class BookingControllerIT extends AbstractControllerIT<BookingDto> {
 
         // WHEN
         // A booking is added
-        BookingDto bookingDto = new BookingDto().resource(resourceDto)
-                .project(projectDto)
+        BookingDto bookingDto = new BookingDto().resource(resourceDto.getId())
+                .project(projectDto.getId())
                 .fromDateTime(ZonedDateTime.now());
         BookingDto add = add(bookingDto);
 

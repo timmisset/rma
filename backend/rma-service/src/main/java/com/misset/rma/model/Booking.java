@@ -1,6 +1,7 @@
 package com.misset.rma.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.time.ZonedDateTime;
 
@@ -17,12 +18,8 @@ public class Booking extends EntityBase {
 
     private ZonedDateTime fromDateTime;
     private ZonedDateTime toDateTime;
-    @JoinColumn(name = "projectId", referencedColumnName = "id")
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    private Project project;
-    @JoinColumn(name = "resourceId", referencedColumnName = "id")
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    private Resource resource;
+    private String project;
+    private String resource;
 
     public ZonedDateTime getFromDateTime() {
         return fromDateTime;
@@ -40,19 +37,19 @@ public class Booking extends EntityBase {
         this.toDateTime = toDateTime;
     }
 
-    public Resource getResource() {
+    public String getResource() {
         return resource;
     }
 
-    public void setResource(Resource resource) {
+    public void setResource(String resource) {
         this.resource = resource;
     }
 
-    public Project getProject() {
+    public String getProject() {
         return project;
     }
 
-    public void setProject(Project project) {
+    public void setProject(String project) {
         this.project = project;
     }
 }

@@ -31,7 +31,7 @@ class BookingServiceTest {
         // ARRANGE
         Booking booking = new Booking();
         Resource resource = new Resource(ID);
-        when(bookingRepository.findAllByResourceId(ID)).thenReturn(List.of(booking));
+        when(bookingRepository.findAllByResource(ID)).thenReturn(List.of(booking));
 
         // ACT
         Collection<Booking> bookings = bookingService.getBookingsByResourceId(resource.getId());

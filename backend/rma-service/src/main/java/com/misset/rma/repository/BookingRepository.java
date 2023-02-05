@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, String> {
 
-    List<Booking> findAllByResourceId(String resourceId);
+    List<Booking> findAllByResource(String resourceId);
 
 }

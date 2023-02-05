@@ -19,6 +19,6 @@ public class BookingService extends AbstractRmaService<Booking> {
     }
 
     public Collection<Booking> getBookingsByResourceId(String id) {
-        return bookingRepository.findAllByResourceId(id);
+        return bookingRepository.findAllByResource(id);
     }
 }

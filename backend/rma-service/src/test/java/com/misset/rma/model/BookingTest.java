@@ -1,5 +1,6 @@
 package com.misset.rma.model;
 
+import com.misset.rma.utils.RmaGUID;
 import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;
@@ -28,14 +29,14 @@ class BookingTest {
 
     @Test
     void testGetterSetterResource() {
-        Resource resource = new Resource();
+        String resource = RmaGUID.generateGUID();
         booking.setResource(resource);
         assertEquals(resource, booking.getResource());
     }
 
     @Test
     void testGetterSetterProject() {
-        Project project = new Project();
+        String project = RmaGUID.generateGUID();
         booking.setProject(project);
         assertEquals(project, booking.getProject());
     }
@@ -46,5 +47,4 @@ class BookingTest {
         Project project = new Project(id);
         assertEquals(id, project.getId());
     }
-
 }

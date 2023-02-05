@@ -8,8 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.openapitools.model.BookingDto;
-import org.openapitools.model.ProjectDto;
-import org.openapitools.model.ResourceDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -32,8 +30,8 @@ class BookingControllerTest {
     void testAddBooking() {
         // ARRANGE
         BookingDto bookingDto = new BookingDto()
-                .project(new ProjectDto().id("projectA").name("my project"))
-                .resource(new ResourceDto().id("resourceA").name("my resource"))
+                .project("projectA")
+                .resource("resourceA")
                 .fromDateTime(ZonedDateTime.now());
         when(bookingService.add(any(Booking.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
@@ -46,7 +44,7 @@ class BookingControllerTest {
         BookingDto savedBooking = bookingDtoResponseEntity.getBody();
         assertNull(bookingDto.getId());
         assertNotNull(savedBooking.getId());
-        assertEquals("projectA", savedBooking.getProject().getId());
-        assertEquals("my project", savedBooking.getProject().getName());
+        assertEquals("projectA", savedBooking.getProject());
+        assertEquals("resourceA", savedBooking.getResource());
     }
 }
