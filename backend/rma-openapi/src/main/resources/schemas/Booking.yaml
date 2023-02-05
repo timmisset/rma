@@ -1,0 +1,17 @@
+required: [ fromDateTime, project, resource ]
+type: object
+properties:
+  id:
+    $ref: ./GUID.yaml
+  fromDateTime:
+    type: string
+    format: datetime
+    example: 2000-01-13T13:00:00
+  toDateTime:
+    type: string
+    format: datetime
+    example: 2000-01-13T13:00:00
+  project:
+    $ref: ./GUID.yaml
+  resource:
+    $ref: ./GUID.yaml

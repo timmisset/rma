@@ -2,22 +2,24 @@ package com.misset.rma.model;
 
 import com.misset.rma.utils.RmaGUID;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
+@MappedSuperclass
 public class EntityBase {
 
     @Id
     @Column(name = "id", nullable = false)
     private final String id;
-
     private String name;
-
     private String description;
 
     public EntityBase() {
         id = RmaGUID.generateGUID();
+    }
+
+    public EntityBase(String id) {
+        this.id = id;
     }
 
     public String getId() {

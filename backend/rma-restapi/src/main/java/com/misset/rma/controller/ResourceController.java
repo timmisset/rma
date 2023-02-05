@@ -2,9 +2,12 @@ package com.misset.rma.controller;
 
 import com.misset.rma.api.ResourceApi;
 import com.misset.rma.api.ResourcesApi;
+import com.misset.rma.mapper.BookingMapper;
 import com.misset.rma.mapper.ResourceMapper;
 import com.misset.rma.model.Resource;
+import com.misset.rma.service.BookingService;
 import com.misset.rma.service.ResourceService;
+import org.openapitools.model.BookingDto;
 import org.openapitools.model.ResourceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +19,15 @@ import java.util.List;
 public class ResourceController implements ResourceApi, ResourcesApi {
     private final ResourceService resourceService;
 
+    private final BookingService bookingService;
+
     private final ResourceMapper mapper;
 
     @Autowired
-    public ResourceController(ResourceService resourceService) {
+    public ResourceController(ResourceService resourceService,
+                              BookingService bookingService) {
         this.resourceService = resourceService;
+        this.bookingService = bookingService;
         this.mapper = ResourceMapper.INSTANCE;
     }
 
@@ -42,10 +49,12 @@ public class ResourceController implements ResourceApi, ResourcesApi {
     }
 
     @Override
+    public ResponseEntity<List<BookingDto>> getResourceBookings(String id) {
+        return ResponseEntity.ok(BookingMapper.INSTANCE.toDto(bookingService.getBookingsByResourceId(id)));
+    }
+
+    @Override
     public ResponseEntity<List<ResourceDto>> getResources() {
-        List<ResourceDto> resources = resourceService.getAll().stream()
-                .map(mapper::toDto)
-                .toList();
-        return ResponseEntity.ok(resources);
+        return ResponseEntity.ok(mapper.toDto(resourceService.getAll()));
     }
 }

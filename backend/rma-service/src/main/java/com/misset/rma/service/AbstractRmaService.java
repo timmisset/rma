@@ -15,7 +15,6 @@ public abstract class AbstractRmaService<T> implements RmaService<T> {
     @Override
     public T get(String id) {
         return repository.getReferenceById(id);
-
     }
 
     @Override

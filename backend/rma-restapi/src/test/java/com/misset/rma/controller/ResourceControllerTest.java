@@ -1,12 +1,15 @@
 package com.misset.rma.controller;
 
+import com.misset.rma.model.Booking;
 import com.misset.rma.model.Resource;
+import com.misset.rma.service.BookingService;
 import com.misset.rma.service.ResourceService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.openapitools.model.BookingDto;
 import org.openapitools.model.ResourceDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +30,9 @@ class ResourceControllerTest {
 
     @Mock
     ResourceService resourceService;
+
+    @Mock
+    BookingService bookingService;
 
     @InjectMocks
     ResourceController resourceController;
@@ -81,5 +87,19 @@ class ResourceControllerTest {
         // ASSERT
         assertEquals(2, resources.getBody().size());
         assertEquals(HttpStatus.OK, resources.getStatusCode());
+    }
+
+    @Test
+    void testGetResourceBookings() {
+        // ARRANGE
+        when(bookingService.getBookingsByResourceId(ID)).thenReturn(Arrays.asList(new Booking(), new Booking()));
+
+        // ACT
+        ResponseEntity<List<BookingDto>> bookings = resourceController.getResourceBookings(ID);
+
+        // ASSERT
+        assertEquals(2, bookings.getBody().size());
+        assertEquals(HttpStatus.OK, bookings.getStatusCode());
+
     }
 }
