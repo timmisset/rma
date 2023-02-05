@@ -12,6 +12,14 @@ import java.util.Collections;
 @Table(name = "project")
 public class Project extends EntityBase {
 
+    public Project() {
+        super();
+    }
+
+    public Project(String id) {
+        super(id);
+    }
+
     @OneToMany
     private final Collection<Resource> resourceCollection = new ArrayList<>();
 

@@ -10,7 +10,7 @@ public class EntityBase {
 
     @Id
     @Column(name = "id", nullable = false)
-    private String id;
+    private final String id;
     private String name;
     private String description;
 
@@ -18,14 +18,12 @@ public class EntityBase {
         id = RmaGUID.generateGUID();
     }
 
-    public String getId() {
-        return id;
+    public EntityBase(String id) {
+        this.id = id;
     }
 
-    public void setId(String id) {
-        if (id != null) {
-            this.id = id;
-        }
+    public String getId() {
+        return id;
     }
 
     public String getName() {

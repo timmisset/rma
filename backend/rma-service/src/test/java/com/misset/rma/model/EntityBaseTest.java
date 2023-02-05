@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class EntityBaseTest {
 
-    public static final String MY_ENTITY = "my entity";
-    public static final String MY_DESCRIPTION = "my description";
+    private static final String MY_ENTITY = "my entity";
+    private static final String MY_DESCRIPTION = "my description";
+    private static final String ID = "id";
 
     @Test
     void testNewInstanceCreatesId() {
@@ -22,7 +23,13 @@ class EntityBaseTest {
     }
 
     private static class EntityBaseImpl extends EntityBase {
+        public EntityBaseImpl() {
 
+        }
+
+        public EntityBaseImpl(String id) {
+            super(id);
+        }
     }
 
 }

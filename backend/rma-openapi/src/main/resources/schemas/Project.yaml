@@ -1,4 +1,4 @@
-required: [ id ]
+required: [ ]
 type: object
 properties:
   id:

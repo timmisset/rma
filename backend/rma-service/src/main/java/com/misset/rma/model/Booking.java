@@ -7,6 +7,13 @@ import java.time.ZonedDateTime;
 @Entity(name = "Booking")
 @Table(name = "booking")
 public class Booking extends EntityBase {
+    public Booking() {
+        super();
+    }
+
+    public Booking(String id) {
+        super(id);
+    }
 
     private ZonedDateTime fromDateTime;
     private ZonedDateTime toDateTime;

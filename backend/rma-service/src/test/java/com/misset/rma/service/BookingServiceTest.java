@@ -30,8 +30,7 @@ class BookingServiceTest {
     void testGetBookings() {
         // ARRANGE
         Booking booking = new Booking();
-        Resource resource = new Resource();
-        resource.setId(ID);
+        Resource resource = new Resource(ID);
         when(bookingRepository.findAllByResourceId(ID)).thenReturn(List.of(booking));
 
         // ACT
@@ -39,6 +38,5 @@ class BookingServiceTest {
 
         // ASSERT
         assertTrue(bookings.contains(booking));
-
     }
 }
