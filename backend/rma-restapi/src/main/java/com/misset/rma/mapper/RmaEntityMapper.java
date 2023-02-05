@@ -36,7 +36,7 @@ public interface RmaEntityMapper<T, D> {
             }
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                  NoSuchMethodException e) {
-            throw new RuntimeException(e);
+            throw new RmaMappingException(e);
         }
     }
 }
