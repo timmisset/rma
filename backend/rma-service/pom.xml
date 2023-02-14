@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.misset</groupId>
+        <groupId>com.misset.rma</groupId>
         <artifactId>rma</artifactId>
         <version>${revision}</version>
     </parent>
@@ -14,25 +14,11 @@
     </properties>
 
     <dependencies>
-        <!-- rma -->
         <dependency>
-            <groupId>com.misset</groupId>
-            <artifactId>rma-openapi</artifactId>
-            <version>${project.version}</version>
+            <groupId>com.misset.rma</groupId>
+            <artifactId>rma-model</artifactId>
+            <version>${revision}</version>
         </dependency>
-        <dependency>
-            <groupId>com.misset</groupId>
-            <artifactId>rma-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- spring -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-
-        <!-- test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -45,13 +31,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
         </dependency>
-
-        <!-- other -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
 
     </dependencies>
 </project>
