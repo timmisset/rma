@@ -1,0 +1,34 @@
+type Project {
+    id: ID!
+    name: String
+    description: String
+    bookings: [Booking]!
+    resources: [Resource]!
+}
+
+type Resource {
+    id: ID!
+    name: String
+    description: String
+    bookings: [Booking]!
+}
+
+type Booking {
+    id: ID!
+    name: String
+    description: String
+    fromDateTime: String!
+    toDateTime: String
+    project: Project!
+    resource: Resource!
+}
+
+# The Root Query for the application
+type Query {
+    bookings: [Booking]!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    createBooking(name: String!, description: String!, project: String!, resource: String!) : Booking!
+}
