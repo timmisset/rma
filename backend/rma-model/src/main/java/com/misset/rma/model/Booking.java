@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 
 @Entity(name = "Booking")
 @Table(name = "booking")
-public class Booking extends EntityBase {
+public class Booking extends DescribedEntityBase {
     public Booking() {
         super();
     }

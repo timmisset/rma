@@ -5,9 +5,9 @@ import com.misset.rma.api.ProjectsApi;
 import com.misset.rma.mapper.ProjectMapper;
 import com.misset.rma.mapper.ResourceMapper;
 import com.misset.rma.model.Project;
+import com.misset.rma.model.ProjectDto;
+import com.misset.rma.model.ResourceDto;
 import com.misset.rma.service.impl.ProjectServiceImpl;
-import org.openapitools.model.ProjectDto;
-import org.openapitools.model.ResourceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

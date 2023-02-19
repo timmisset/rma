@@ -1,8 +1,8 @@
 package com.misset.rma.mapper;
 
 import com.misset.rma.model.Booking;
+import com.misset.rma.model.BookingDto;
 import org.junit.jupiter.api.Test;
-import org.openapitools.model.BookingDto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

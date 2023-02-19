@@ -1,0 +1,21 @@
+item: object
+properties:
+  id:
+    $ref: ../GUID.yaml
+  from:
+    $ref: ../DateTime.yaml
+  to:
+    $ref: ../DateTime.yaml
+  interval:
+    type: integer
+  units:
+    type: string
+    enum:
+      - days
+      - weeks
+      - months
+      - years
+  patternDetails:
+    oneOf:
+      - $ref: ./DailyPattern.yaml
+      - $ref: ./WeeklyPattern.yaml

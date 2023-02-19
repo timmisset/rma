@@ -66,29 +66,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>${swagger-codegen-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
-
-                            <!-- Use 'openapi-yaml' to get resolved YAML or 'openapi' to get resolved JSON -->
-                            <language>openapi-yaml</language>
-
-                            <configOptions>
-                                <!-- Default file name is openapi.yaml or openapi.json -->
-                                <outputFile>openapi.yaml</outputFile>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>${openapi-generator-maven-plugin.version}</version>
@@ -107,6 +84,7 @@
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <openApiNullable>false</openApiNullable>
                                 <apiPackage>com.misset.rma.api</apiPackage>
+                                <modelPackage>com.misset.rma.model</modelPackage>
                                 <basePackage>com.misset.rma</basePackage>
                                 <interfaceOnly>true</interfaceOnly>
                             </configOptions>

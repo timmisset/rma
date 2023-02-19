@@ -1,0 +1,6 @@
+type: object
+properties:
+  weekdays:
+    type: boolean
+  weekends:
+    type: boolean

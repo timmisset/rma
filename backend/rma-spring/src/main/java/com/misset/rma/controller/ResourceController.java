@@ -4,11 +4,11 @@ import com.misset.rma.api.ResourceApi;
 import com.misset.rma.api.ResourcesApi;
 import com.misset.rma.mapper.BookingMapper;
 import com.misset.rma.mapper.ResourceMapper;
+import com.misset.rma.model.BookingDto;
 import com.misset.rma.model.Resource;
+import com.misset.rma.model.ResourceDto;
 import com.misset.rma.service.impl.BookingServiceImpl;
 import com.misset.rma.service.impl.ResourceServiceImpl;
-import org.openapitools.model.BookingDto;
-import org.openapitools.model.ResourceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,6 +50,11 @@ public class ResourceController implements ResourceApi, ResourcesApi {
     @Override
     public List<BookingDto> getResourceBookings(String id) {
         return BookingMapper.INSTANCE.toDto(bookingService.getBookingsByResourceId(id));
+    }
+
+    @Override
+    public BookingDto addBooking(BookingDto bookingDto) {
+        return null;
     }
 
     @Override

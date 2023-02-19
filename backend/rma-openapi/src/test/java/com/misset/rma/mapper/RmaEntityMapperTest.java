@@ -1,8 +1,8 @@
 package com.misset.rma.mapper;
 
 import com.misset.rma.model.Resource;
+import com.misset.rma.model.ResourceDto;
 import org.junit.jupiter.api.Test;
-import org.openapitools.model.ResourceDto;
 
 import java.util.Collections;
 

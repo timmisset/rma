@@ -9,3 +9,9 @@ properties:
   description:
     type: string
     example: Resource A is a resource to do this and that
+  availability:
+    $ref: ./availability/Availability.yaml
+  bookings:
+    type: array
+    items:
+      $ref: ./Booking.yaml

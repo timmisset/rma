@@ -1,0 +1,15 @@
+required: [ ]
+type: object
+properties:
+  id:
+    $ref: ../GUID.yaml
+  schema:
+    description: Recurring pattern within a given date range
+    type: array
+    items:
+      $ref: ./Pattern.yaml
+  overrides:
+    type: array
+    description: Specific availability patterns that will override the recurring pattern
+    items:
+      $ref: ./Pattern.yaml

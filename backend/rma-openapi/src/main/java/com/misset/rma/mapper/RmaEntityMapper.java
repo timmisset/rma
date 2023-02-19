@@ -4,7 +4,6 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ObjectFactory;
 import org.mapstruct.TargetType;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
@@ -34,8 +33,7 @@ public interface RmaEntityMapper<T, D> {
             } else {
                 return targetClass.getDeclaredConstructor().newInstance();
             }
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                 NoSuchMethodException e) {
+        } catch (Exception e) {
             throw new RmaMappingException(e);
         }
     }

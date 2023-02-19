@@ -10,6 +10,14 @@ class BookingTest {
 
     private static final Booking booking = new Booking();
 
+    private static final String ID = "id";
+
+    @Test
+    void testConstructor() {
+        Booking bookingWithId = new Booking(ID);
+        assertEquals(ID, bookingWithId.getId());
+    }
+
     @Test
     void testGetterSettersFromDate() {
         ZonedDateTime dateTime = ZonedDateTime.now();

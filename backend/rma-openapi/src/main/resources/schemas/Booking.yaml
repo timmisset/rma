@@ -4,13 +4,9 @@ properties:
   id:
     $ref: ./GUID.yaml
   fromDateTime:
-    type: string
-    format: datetime
-    example: 2000-01-13T13:00:00
+    $ref: ./DateTime.yaml
   toDateTime:
-    type: string
-    format: datetime
-    example: 2000-01-13T13:00:00
+    $ref: ./DateTime.yaml
   project:
     $ref: ./GUID.yaml
   resource:

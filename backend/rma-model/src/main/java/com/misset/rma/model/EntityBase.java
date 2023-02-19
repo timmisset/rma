@@ -14,8 +14,6 @@ public class EntityBase {
     @Id
     @Column(name = "id", nullable = false)
     private final String id;
-    private String name;
-    private String description;
 
     public EntityBase() {
         id = generateId();
@@ -27,22 +25,6 @@ public class EntityBase {
 
     public String getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     private String generateId() {
