@@ -36,8 +36,11 @@ public class Project extends DescribedEntityBase {
     }
 
     public void setResources(Collection<Resource> resources) {
-        resourceCollection.clear();
-        resourceCollection.addAll(resources);
+        if (resources != null) {
+            resourceCollection.clear();
+            resourceCollection.addAll(resources);
+        }
+
     }
 
 }

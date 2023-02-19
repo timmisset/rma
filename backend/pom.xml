@@ -57,6 +57,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 
 
+        <commons-lang3.version>3.12.0</commons-lang3.version>
     </properties>
 
     <dependencyManagement>
@@ -115,6 +116,12 @@
                 <artifactId>mockito-junit-jupiter</artifactId>
                 <scope>test</scope>
                 <version>${mockito.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

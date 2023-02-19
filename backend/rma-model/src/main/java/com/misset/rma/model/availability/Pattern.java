@@ -2,8 +2,10 @@ package com.misset.rma.model.availability;
 
 import com.misset.rma.model.EntityBase;
 import jakarta.persistence.Entity;
+import org.apache.commons.lang3.Range;
 
 import java.time.ZonedDateTime;
+import java.time.chrono.ChronoZonedDateTime;
 
 @Entity(name = "Pattern")
 public abstract class Pattern extends EntityBase {
@@ -36,4 +38,11 @@ public abstract class Pattern extends EntityBase {
         this.interval = interval;
     }
 
+    public Range<ZonedDateTime> computeRange() {
+        ZonedDateTime now = ZonedDateTime.now();
+        return Range.between(
+                from == null ? now : from,
+                to == null ? now : to,
+                ChronoZonedDateTime::compareTo);
+    }
 }
